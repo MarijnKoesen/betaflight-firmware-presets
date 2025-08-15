@@ -1,34 +1,52 @@
-#$ TITLE: CaptainM Drippuh 5" Racer
+#$ TITLE: MarlinFPV Race Public  5"
 #$ FIRMWARE_VERSION: 4.5
 #$ CATEGORY: TUNE
-#$ STATUS: COMMUNITY
-#$ KEYWORDS: 6S, race, racing, 5 inch, 5", drippuh
-#$ AUTHOR: Captain M
+#$ STATUS:  EXPERIMENTAL
+#$ KEYWORDS: DRIPPUH, race, 5 inch, 5", sanderpuh, puh, ultralite, lightweight, nano, 2024 sliders, marlin
+#$ AUTHOR: SanderPuh
 
 #$ PARSER: MARKED
-#$ FORCE_OPTIONS_REVIEW: TRUE
 
-#$ DESCRIPTION: Version 0.0.1
-#$ DESCRIPTION: This tune is ideal for beginners who are taking up drone racing. It's light on the motors yet allows for good performance.
+#$ DESCRIPTION:
+#$ DESCRIPTION: <img src="https://droneshop.nl/pub/media/catalog/product/cache/57e05a978a5497b203ff83c2f6f349f4/d/r/drippuh-5-inch-racing-drone-hdzero-pnp-2.jpg" style="max-width: 100%; margin-left: auto; margin-right: auto; display: block;"/>
+#$ DESCRIPTION: <h1>DRIPPUH race</h1>
+#$ DESCRIPTION: <br>
+#$ DESCRIPTION:
+#$ DESCRIPTION: This racing tune was developed by Marlin FPV to suit my new DRIPPUH 5" racer project. [DRIPPUH](https://droneshop.nl/drippuh-drone-racing-frame)
+#$ DESCRIPTION: <br>
+#$ DESCRIPTION:
+#$ DESCRIPTION: This tune 'SHOULD' work with other ultralite 5" frames. For best performance set ESC PWM frequency to 48Khz locked and timing to 23 degrees.
+#$ DESCRIPTION: The tune is slider based to make it easier to adjust for personal taste but use at your own risk.
+#$ DESCRIPTION:
+#$ DESCRIPTION: <br>
+#$ DESCRIPTION:
+#$ DESCRIPTION: ## Things to note:
+#$ DESCRIPTION: - **YOU HAVE TO USE RPM FILTERING WITH THIS TUNE!** Failure to do so might result in fire 🔥
+#$ DESCRIPTION: - Regarding DShot600: if your setup has errors in the motor tab using bidirectional DShot, change to **8k/4k and DShot300**
+#$ DESCRIPTION: - Also this should be applied to a clean flash after you've setup your rates, switches, vtx tables etc.
+#$ DESCRIPTION: - To test, arm the quad with props on, it should **sound clean with no grinding**. If it passes that then hover test and check motor temps.
+#$ DESCRIPTION: - **If anything is off, don't fly it!!**
+#$ DESCRIPTION:
+#$ DESCRIPTION: <br>
+#$ DESCRIPTION:
+#$ DESCRIPTION: ## Second note... Radio links:
+#$ DESCRIPTION: 1. Make sure your radio firmware is up to date using either EdgeTX or OpenTX
+#$ DESCRIPTION: 1. Make sure your **ADC Filter is OFF** in the hardware page
+#$ DESCRIPTION: 1. Go to the radio (RC_LINK) presets and apply the correct setup for your system and link speed
 
-#$ DESCRIPTION: ### Requirements:
-#$ DESCRIPTION: - 5 inch race quads with 6S packs.
-#$ DESCRIPTION: - Works with Analog or HDZero
-#$ DESCRIPTION: - DSHOT600 with bidirectional DSHOT enabled. This is very important.
-#$ DESCRIPTION: - Stack nuts must be present and tight. The ones below the FC. Some call them the golden nuts or nuts of glory.
-#$ DESCRIPTION: - Motor screws should be tight and arms should be solid and not gummy.
-#$ DESCRIPTION: - Special thanks to testers Meor, Imad, Muqrie, AdilzFPV
-#$ DESCRIPTION: ### Recommendation:
-#$ DESCRIPTION: - Apply Barracuda filters
-#$ DESCRIPTION: - Apply RClink of ExpressLRS 250Hz or ExpressLRS 500Hz for racing
-#$ DESCRIPTION: ### BLHeli32 setting
-#$ DESCRIPTION: - Set low and high frequency to 48
-#$ DESCRIPTION: - Rampup power 25%
-#$ DESCRIPTION: - Motor timing 16 deg
-#$ DISCUSSION: https://github.com/betaflight/firmware-presets/pull/442
-#$ INCLUDE_WARNING: misc/warnings/en/dshot.txt
+#$ DISCUSSION: https://github.com/sanderpuh/firmware-presets/discussions
 
+#$ INCLUDE_WARNING: misc/warnings/en/rpm_filters.txt
+#$ INCLUDE: presets/4.5/tune/defaults.txt
+#$ INCLUDE: presets/4.5/filters/defaults.txt
+
+
+# -- Loading of default Tune and Filters finished --
+# -- Preset tune starts here --
+
+# -- Tune --
 #$ OPTION_GROUP BEGIN: Tune options
+
   #$ OPTION BEGIN (UNCHECKED): Marlin PRO tune
         # -- Gyro Lowpass Filters --
         set gyro_lpf1_static_hz = 0
@@ -150,114 +168,56 @@
     #$ OPTION END
 #$ OPTION_GROUP END
 
-#$ OPTION_GROUP BEGIN: (EXCLUSIVE) Flight Controller
-    #$ OPTION BEGIN (UNCHECKED): Base settings
-        feature -AIRMODE
-        beacon RX_LOST
+# --- Dshot ---
+#$ OPTION_GROUP BEGIN: Dshot - MUST(!) choose ONE!
+    #$ OPTION BEGIN (CHECKED): Dshot600
         set dshot_bidir = ON
 
-        set vcd_video_system = HD # Set HD OSD
-        set osd_displayport_device = MSP # Map to displayport
-
-        # master
-        # set rc_smoothing_auto_factor = 25       # no clue why I had this
-        # set rc_smoothing_auto_factor_throttle = 25
-        # set craft_name = CaptainM Drippuh Tune
-        # set ledstrip_rainbow_delta = 150
-
-        # vtxtable
-        vtxtable bands 6
-        vtxtable channels 8
-        vtxtable band 1 BOSCAM_A A CUSTOM     0    0    0    0    0    0    0    0
-        vtxtable band 2 BOSCAM_B B CUSTOM     0    0    0    0    0    0    0    0
-        vtxtable band 3 BOSCAM_E E CUSTOM  5705    0    0    0    0    0    0    0
-        vtxtable band 4 FATSHARK F CUSTOM  5740 5760    0 5800    0    0    0    0
-        vtxtable band 5 RACEBAND R CUSTOM  5658 5695 5732 5769 5806 5843 5880 5917
-        vtxtable band 6 LOWBAND  L CUSTOM     0    0    0    0    0    0    0    0
-        vtxtable powerlevels 3
-        vtxtable powervalues 14 23 0
-        vtxtable powerlabels 25 200 0
-    #$ OPTION END
-
-    #$ OPTION BEGIN (CHECKED): Disable colored warnings (not compatible with HDZERO)
-        set displayport_msp_fonts = 0,0,0,0
-    #$ OPTION END
-
-    #$ OPTION BEGIN (UNCHECKED): HDZero Halo MPU6000 specifics
         set motor_pwm_protocol = DSHOT600
-        # set gyro_to_use = SECOND
     #$ OPTION END
 
-    #$ OPTION BEGIN (UNCHECKED): HDZero Halo ICM6000 specifics
-        set motor_pwm_protocol = DSHOT600
+    #$ OPTION BEGIN (UNCHECKED): Dshot300
+        set dshot_bidir = ON
+        set motor_pwm_protocol = Dshot300
     #$ OPTION END
 #$ OPTION_GROUP END
 
 
-# --- FEATURES ---
-#$ OPTION_GROUP BEGIN: Features
-    #$ OPTION BEGIN (UNCHECKED): Modes & Adjustments
-        aux 0 0 0 1300 2100 0 0
-        aux 1 1 1 1675 2100 0 0
-        aux 2 13 3 1300 2100 0 0
-        aux 3 28 1 900 1275 0 0
-        aux 4 28 1 1675 2100 0 0
-        aux 5 35 2 1675 2100 0 0
-        aux 6 36 6 1675 2100 0 0
+# --- CUSTOM OPTIONS ---
+#$ OPTION_GROUP BEGIN: Custom Options
 
-        # Set OSD based on arm status
-        adjrange 0 0 0 925 2075 29 0 0 0
+    #$ OPTION BEGIN (UNCHECKED): Miscellaneous PUH settings
+        # -- Misc --
+        set yaw_spin_recovery = AUTO
+        set thrust_linear = 0
+        set throttle_boost = 3
+        set small_angle = 180
+        set min_check = 1005
+        set max_check = 1995
+        set min_throttle = 1020
+
+        # -- Antigravity --
+        set anti_gravity_gain = 90
+
+        # -- iTerm --
+        set iterm_relax_cutoff = 20
+
+        # -- PIDsum Limits --
+        set iterm_limit = 500
+        set pidsum_limit_yaw = 1000
     #$ OPTION END
 
-    #$ OPTION BEGIN (CHECKED): Reversed Motors (props-out)
+    #$ OPTION BEGIN (UNCHECKED): Vbat Sag Compensation
+        set vbat_sag_compensation = 100
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): Motors reversed
         set yaw_motors_reversed = ON
     #$ OPTION END
 
-    #$ OPTION BEGIN (UNCHECKED): OSD
-        set osd_warn_bitmask = 294911
-        set osd_vbat_pos = 11270
-        set osd_tim_2_pos = 11302
-        set osd_flymode_pos = 10790
-        set osd_vtx_channel_pos = 2165
-        set osd_craft_name_pos = 10758
-        set osd_pilot_name_pos = 518
-        set osd_warnings_pos = 14773
-        set osd_disarmed_pos = 10549
-        set osd_rtc_date_time_pos = 2618
-        set osd_core_temp_pos = 70
-        set osd_log_status_pos = 236
-        set osd_profile_name_pos = 486
-        set osd_sys_bitrate_pos = 134
-        set osd_sys_vtx_temp_pos = 2150
-        set osd_stat_bitmask = 1090549742
-        set osd_canvas_width = 50
-        set osd_canvas_height = 18
-   #$ OPTION END
-
-    #$ OPTION BEGIN (UNCHECKED): VTX Tables
-        vtx 0 5 0 0 3 900 1100
-        vtx 1 5 0 0 1 1900 2100
-    #$ OPTION END
-
-#$ OPTION_GROUP END
-
-# --- MOTOR RPM ---
-#$ OPTION_GROUP BEGIN: (EXCLUSIVE) Motor RPM
-    #$ OPTION BEGIN (UNCHECKED): 1980KV
-        set motor_kv = 1980
-    #$ OPTION END
-    #$ OPTION BEGIN (UNCHECKED): 2050KV
-        set motor_kv = 2050
-    #$ OPTION END
-#$ OPTION_GROUP END
-
-# --- RPM LIMIT ---
-#$ OPTION_GROUP BEGIN: (EXCLUSIVE) RPM Limit
-    #$ OPTION BEGIN (UNCHECKED): 50k
-        set rpm_limit_value = 50000
-    #$ OPTION END
-    #$ OPTION BEGIN (UNCHECKED): 18k
-        set rpm_limit_value = 18000
+    #$ OPTION BEGIN (UNCHECKED): Bosch (BMI) gyro - EXPERIMENTAL
+        set gyro_lpf1_dyn_min_hz = 0
+        set gyro_lpf1_dyn_max_hz = 0
     #$ OPTION END
 #$ OPTION_GROUP END
 
@@ -341,19 +301,8 @@
     #$ OPTION END
 #$ OPTION_GROUP END
 
-
 # --- RATES ---
 #$ OPTION_GROUP BEGIN: Optional Rates
-    #$ OPTION BEGIN (UNCHECKED): CaptainM's Rates
-        #$ INCLUDE: presets/4.3/rates/defaults.txt
-        set roll_rc_rate = 20
-        set pitch_rc_rate = 20
-        set yaw_rc_rate = 20
-        set roll_expo = 57
-        set pitch_expo = 57
-        set yaw_expo = 57
-    #$ OPTION END
-
     #$ OPTION BEGIN (UNCHECKED): PUH's Rates
         #$ INCLUDE: presets/4.3/rates/defaults.txt
         set rates_type = BETAFLIGHT
