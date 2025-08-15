@@ -195,6 +195,7 @@
       "Neil Marek (Grower)",
       "NemesisXB",
       "QuadMcFly (Ryan Harrell)",
+      "SanderPuh",
       "Sartor",
       "Sjoer van der Ploeg",
       "Stingers Swarm",
@@ -430,6 +431,7 @@
       "LeadFingers",
       "League",
       "leds",
+      "lightweight",
       "Limon",
       "link",
       "Llama",
@@ -441,6 +443,7 @@
       "lr5",
       "mamba",
       "Marek",
+      "marlin",
       "mck",
       "meteor",
       "MGP",
@@ -485,6 +488,7 @@
       "PIDtoolbox",
       "pro32",
       "profile",
+      "puh",
       "Pure Race",
       "quaddiction",
       "quick",
@@ -522,6 +526,7 @@
       "sa2.0",
       "sa20",
       "Safe",
+      "sanderpuh",
       "sbang",
       "sbus",
       "SBUS fast",
@@ -7333,8 +7338,53 @@
     },
     {
       "fullPath": "presets/4.5/tune/captain_m/drippuh_racer.txt",
-      "hash": "28402ec11a85503e8016d720981bd0dc5b916f408dc5728eace3f0590c5b8a8b",
+      "hash": "d41f60bafdd52721339a75fc925feeaaa9f9c7db3daf1bcb56f9b9b65705ac90",
       "title": "CaptainM Drippuh 5\" Racer",
+      "firmware_version": [
+        "4.5"
+      ],
+      "category": "TUNE",
+      "status": "COMMUNITY",
+      "keywords": [
+        "6S",
+        "race",
+        "racing",
+        "5 inch",
+        "5\"",
+        "drippuh"
+      ],
+      "author": "Captain M",
+      "force_options_review": true,
+      "priority": 1000000000000
+    },
+    {
+      "fullPath": "presets/4.5/tune/captain_m/my_drippuh_racer.txt",
+      "hash": "5398dcccf9d006a49b238a1ed2c0fdfd4a24ef0e059bb73b980f50187d7de47d",
+      "title": "DRIPPUH Race  5\"",
+      "firmware_version": [
+        "4.5"
+      ],
+      "category": "TUNE",
+      "status": "EXPERIMENTAL",
+      "keywords": [
+        "DRIPPUH",
+        "race",
+        "5 inch",
+        "5\"",
+        "sanderpuh",
+        "puh",
+        "ultralite",
+        "lightweight",
+        "nano",
+        "2024 sliders"
+      ],
+      "author": "SanderPuh",
+      "priority": 1000000000000
+    },
+    {
+      "fullPath": "presets/4.5/tune/captain_m/template.txt",
+      "hash": "88e921d4131524f3d6e918e8f977b31dcc35e1a36bf8cf5234f748326792ba54",
+      "title": "CaptainM Preset Template",
       "firmware_version": [
         "4.5"
       ],
@@ -7412,6 +7462,31 @@
         "filters"
       ],
       "author": "Betaflight",
+      "priority": 1000000000000
+    },
+    {
+      "fullPath": "presets/4.5/tune/drippuh.txt",
+      "hash": "4a7075f347f8e0ea54274d6ef1f9917979302f705041707e8d63a49c52eb3176",
+      "title": "MarlinFPV Race Public  5\"",
+      "firmware_version": [
+        "4.5"
+      ],
+      "category": "TUNE",
+      "status": "EXPERIMENTAL",
+      "keywords": [
+        "DRIPPUH",
+        "race",
+        "5 inch",
+        "5\"",
+        "sanderpuh",
+        "puh",
+        "ultralite",
+        "lightweight",
+        "nano",
+        "2024 sliders",
+        "marlin"
+      ],
+      "author": "SanderPuh",
       "priority": 1000000000000
     },
     {
