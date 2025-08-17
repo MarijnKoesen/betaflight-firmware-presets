@@ -160,7 +160,7 @@
 #$ OPTION_GROUP END
 
 #$ OPTION_GROUP BEGIN: (EXCLUSIVE) Flight Controller
-    #$ OPTION BEGIN (UNCHECKED): Base settings
+    #$ OPTION BEGIN (CHECKED): Base settings
         feature -AIRMODE
         beacon RX_LOST
         set dshot_bidir = ON
@@ -226,7 +226,7 @@
     #$ OPTION END
 
     #$ OPTION BEGIN (CHECKED): OSD
-        #$ INCLUDE: presets/4.3/osd/defaults.txt
+        #$ INCLUDE: presets/4.4/osd/defaults.txt
 
         set osd_warn_bitmask = 294911
         set osd_vbat_pos = 11270
