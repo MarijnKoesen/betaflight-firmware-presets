@@ -7338,13 +7338,13 @@
     },
     {
       "fullPath": "presets/4.5/tune/captain_m/drippuh_racer.txt",
-      "hash": "390665156de887551fe47a8726ed4f91705df95a933b1cfb7c54d94aaa391b51",
+      "hash": "73f2f0b98abe16c126ccef43beb2cf30ba2ebe117585cb6cb096acb898a4c320",
       "title": "CaptainM Drippuh 5\" Racer",
       "firmware_version": [
         "4.5"
       ],
       "category": "TUNE",
-      "status": "COMMUNITY",
+      "status": "EXPERIMENTAL",
       "keywords": [
         "6S",
         "race",
