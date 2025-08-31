@@ -162,6 +162,8 @@
         set vcd_video_system = HD # Set HD OSD
         set osd_displayport_device = MSP # Map to displayport
 
+        set small_angle = 180 # max arm angle
+
         # master
         # set rc_smoothing_auto_factor = 25       # no clue why I had this
         # set rc_smoothing_auto_factor_throttle = 25
