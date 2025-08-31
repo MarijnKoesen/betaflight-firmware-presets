@@ -10,9 +10,10 @@
 
 #$ DESCRIPTION: Version 0.0.1
 #$ DESCRIPTION: This is my personal tune, including all my modes, osd etc so I can easily configure my quads. USE AT YOUR OWN RISK.
-
+#$ DESCRIPTION:
 #$ DESCRIPTION: ### Requirements:
 #$ DESCRIPTION: - 5 inch race quads with 6S packs.
+#$ DESCRIPTION: - Props OUT
 #$ DESCRIPTION: - Works with HDZero
 #$ DESCRIPTION: - DSHOT600 with bidirectional DSHOT enabled. This is very important.
 #$ DESCRIPTION: ### ESC settings
