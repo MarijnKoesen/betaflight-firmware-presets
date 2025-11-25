@@ -52,9 +52,12 @@
         set d_min_pitch = 50
         set d_max_gain = 20
         set auto_profile_cell_count = 1
+        set feedforward_transition = 0
         set feedforward_averaging = 2_POINT
         set feedforward_smooth_factor = 65
         set feedforward_jitter_factor = 5
+        set feedforward_boost = 15
+        set feedforward_max_rate_limit = 90
         set simplified_master_multiplier = 130
         set simplified_d_gain = 115
         set simplified_pi_gain = 115
@@ -63,6 +66,13 @@
         set simplified_pitch_pi_gain = 110
         set tpa_mode = PD
         set tpa_rate = 55
+
+        set rpm_filter_harmonics = 1
+        set rpm_filter_weights = 100,100,100
+        set rpm_filter_q = 500
+        set rpm_filter_min_hz = 100
+        set rpm_filter_fade_range_hz = 120
+        set rpm_filter_lpf_hz = 150
 
         set gyro_lpf1_static_hz = 0
         set dyn_notch_count = 1
@@ -122,7 +132,7 @@
     #$ OPTION END
 #$ OPTION_GROUP END
 
-#$ OPTION_GROUP BEGIN: (EXCLUSIVE) Flight Controller
+#$ OPTION_GROUP BEGIN: Flight Controller
     #$ OPTION BEGIN (CHECKED): Base settings
         feature -AIRMODE
         beacon RX_LOST
@@ -141,6 +151,11 @@
     #$ OPTION BEGIN (UNCHECKED): BetaFPV 4in1 AIO
         set motor_pwm_protocol = DSHOT300
         set pid_process_denom = 4 # 4Khz PID loop
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): BetaFPV 5in1 AIO
+        set motor_pwm_protocol = DSHOT300
+        set pid_process_denom = 2 # 4Khz PID loop
     #$ OPTION END
 #$ OPTION_GROUP END
 
@@ -229,17 +244,6 @@
     #$ OPTION END
 #$ OPTION_GROUP END
 
-# --- RPM LIMIT ---
-#$ OPTION_GROUP BEGIN: (EXCLUSIVE) RPM Limit
-    #$ OPTION BEGIN (UNCHECKED): 50k
-        set rpm_limit_value = 50000
-    #$ OPTION END
-    #$ OPTION BEGIN (UNCHECKED): 18k
-        set rpm_limit_value = 18000
-    #$ OPTION END
-#$ OPTION_GROUP END
-
-
 # --- RC LINK ---
 #$ OPTION_GROUP BEGIN: Some popular RC Links
 
@@ -322,7 +326,7 @@
 
 # --- RATES ---
 #$ OPTION_GROUP BEGIN: Optional Rates
-    #$ OPTION BEGIN (CHECKED): CaptainM's Rates
+    #$ OPTION BEGIN (UNCHECKED): CaptainM's Rates
         #$ INCLUDE: presets/4.3/rates/defaults.txt
         set roll_rc_rate = 20
         set pitch_rc_rate = 20
