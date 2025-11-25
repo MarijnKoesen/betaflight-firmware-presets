@@ -376,7 +376,7 @@
         set yaw_srate = 70
     #$ OPTION END
 
-	#$ OPTION BEGIN (?UNCHECKED): Gimme all rates!
+	#$ OPTION BEGIN (UNCHECKED): Gimme all rates!
 		rateprofile 0
 		set rateprofile_name = BF
 		set thr_mid = 50
