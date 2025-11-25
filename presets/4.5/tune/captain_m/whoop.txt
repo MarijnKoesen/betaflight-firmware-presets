@@ -1,0 +1,420 @@
+#$ TITLE: CaptainM Whoop
+#$ FIRMWARE_VERSION: 4.5
+#$ CATEGORY: TUNE
+#$ STATUS: EXPERIMENTAL
+#$ KEYWORDS: 1S, race, racing, whoop
+#$ AUTHOR: Captain M
+
+#$ PARSER: MARKED
+#$ FORCE_OPTIONS_REVIEW: TRUE
+
+#$ DESCRIPTION: Version 0.0.1
+#$ DESCRIPTION: This is my personal tune, including all my modes, osd etc so I can easily configure my quads. USE AT YOUR OWN RISK.
+#$ DESCRIPTION:
+#$ DESCRIPTION: ### Requirements:
+#$ DESCRIPTION: - 1S Whoop
+#$ DESCRIPTION: - Props OUT
+#$ DESCRIPTION: - Built for Analog
+#$ DESCRIPTION: - DSHOT600 with bidirectional DSHOT enabled. This is very important.
+#$ DESCRIPTION: - Make sure your **ADC Filter is OFF** in the hardware page of your Radio.
+#$ DESCRIPTION:
+#$ DESCRIPTION: ### ESC settings
+#$ DESCRIPTION: - 96Khz
+#$ DESCRIPTION:
+#$ DESCRIPTION: ### Whoop builds
+#$ DESCRIPTION: - Board: BetaFPV AIO 4in1 & BetaFPV AIO 5in1
+#$ DESCRIPTION: - Motors: BetaFPV 24kv, Hummingbird 30kv, VCI 30kv light
+#$ DESCRIPTION: - Camera: BetaFPV C3
+
+#$ INCLUDE_WARNING: misc/warnings/en/dshot.txt
+
+#$ OPTION_GROUP BEGIN: Tune options
+    #$ OPTION BEGIN (UNCHECKED): My Tunes
+        #$ INCLUDE: presets/4.5/tune/defaults.txt
+        #$ INCLUDE: presets/4.5/filters/defaults.txt
+
+        profile 0
+        set profile_name = HQ 31mm
+        set vbat_sag_compensation = 100
+        set p_pitch = 77
+        set i_pitch = 138
+        set d_pitch = 50
+        set f_pitch = 0
+        set p_roll = 67
+        set i_roll = 119
+        set d_roll = 44
+        set f_roll = 0
+        set p_yaw = 67
+        set i_yaw = 119
+        set f_yaw = 0
+        set angle_p_gain = 100
+        set d_min_roll = 44
+        set d_min_pitch = 50
+        set d_max_gain = 20
+        set auto_profile_cell_count = 1
+        set feedforward_averaging = 2_POINT
+        set feedforward_smooth_factor = 65
+        set feedforward_jitter_factor = 5
+        set simplified_master_multiplier = 130
+        set simplified_d_gain = 115
+        set simplified_pi_gain = 115
+        set simplified_dmax_gain = 0
+        set simplified_feedforward_gain = 0
+        set simplified_pitch_pi_gain = 110
+        set tpa_mode = PD
+        set tpa_rate = 55
+
+        set gyro_lpf1_static_hz = 0
+        set dyn_notch_count = 1
+        set dyn_notch_q = 600
+        set dyn_notch_max_hz = 750
+        set gyro_lpf1_dyn_min_hz = 0
+        set gyro_lpf1_dyn_max_hz = 0
+
+        profile 1
+        set profile_name = Karate24
+        set dterm_lpf1_dyn_min_hz = 67
+        set dterm_lpf1_dyn_max_hz = 135
+        set dterm_lpf1_dyn_expo = 7
+        set dterm_lpf1_static_hz = 67
+        set dterm_lpf2_static_hz = 135
+        set vbat_sag_compensation = 100
+        set crash_recovery_angle = 30
+        set crash_recovery_rate = 255
+        set crash_recovery = ON
+        set iterm_relax_cutoff = 45
+        set p_pitch = 44
+        set i_pitch = 87
+        set d_pitch = 38
+        set f_pitch = 143
+        set p_roll = 42
+        set i_roll = 83
+        set d_roll = 32
+        set f_roll = 138
+        set d_min_roll = 25
+        set d_min_pitch = 30
+        set thrust_linear = 20
+        set feedforward_averaging = 2_POINT
+        set feedforward_smooth_factor = 65
+        set feedforward_jitter_factor = 1
+        set feedforward_boost = 18
+        set feedforward_max_rate_limit = 100
+        set dyn_idle_min_rpm = 120
+        set dyn_idle_p_gain = 35
+        set dyn_idle_start_increase = 60
+        set simplified_pids_mode = RP
+        set simplified_i_gain = 110
+        set simplified_d_gain = 85
+        set simplified_pi_gain = 95
+        set simplified_dmax_gain = 80
+        set simplified_feedforward_gain = 115
+        set simplified_pitch_d_gain = 105
+        set simplified_dterm_filter_multiplier = 90
+        set ez_landing_limit = 5
+
+        set gyro_lpf1_static_hz = 0
+        set dyn_notch_count = 1
+        set dyn_notch_q = 600
+        set dyn_notch_max_hz = 750
+        set gyro_lpf1_dyn_min_hz = 0
+        set gyro_lpf1_dyn_max_hz = 0
+
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+#$ OPTION_GROUP BEGIN: (EXCLUSIVE) Flight Controller
+    #$ OPTION BEGIN (CHECKED): Base settings
+        feature -AIRMODE
+        beacon RX_LOST
+        beacon RX_SET
+
+        set dshot_bidir = ON
+        set debug_mode = GYRO_SCALED
+
+        set vbat_max_cell_voltage = 445
+        set vbat_warning_cell_voltage = 345
+
+        set small_angle = 180 # max arm angle
+
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): BetaFPV 4in1 AIO
+        set motor_pwm_protocol = DSHOT300
+        set pid_process_denom = 4 # 4Khz PID loop
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+
+# --- FEATURES ---
+#$ OPTION_GROUP BEGIN: Features
+    #$ OPTION BEGIN (CHECKED): Modes & Adjustments
+        #$ INCLUDE: presets/4.3/modes/defaults.txt
+
+        aux 0 0 0 1700 2100 0 0
+        aux 1 1 1 1700 2100 0 0
+        aux 2 13 3 1700 2100 0 0
+        aux 3 28 1 1250 1650 0 0
+        aux 4 28 1 1700 2100 0 0
+        aux 5 35 2 1700 2100 0 0
+
+        # Set OSD based on arm status
+        adjrange 0 0 0 925 2075 29 0 0 0
+    #$ OPTION END
+
+    #$ OPTION BEGIN (CHECKED): Reversed Motors (props-out)
+        set yaw_motors_reversed = ON
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): OSD
+        #$ INCLUDE: presets/4.4/osd/defaults.txt
+
+        set osd_rssi_dbm_alarm = -99
+        set osd_vbat_pos = 10593
+        set osd_rssi_pos = 226
+        set osd_link_quality_pos = 10625
+        set osd_rssi_dbm_pos = 2305
+        set osd_tim_1_pos = 386
+        set osd_tim_2_pos = 10646
+        set osd_remaining_time_estimate_pos = 33
+        set osd_flymode_pos = 10614
+        set osd_throttle_pos = 10582
+        set osd_vtx_channel_pos = 2081
+        set osd_crosshairs_pos = 205
+        set osd_current_pos = 2241
+        set osd_mah_drawn_pos = 2209
+        set osd_craft_name_pos = 2113
+        set osd_home_dist_pos = 98
+        set osd_flight_dist_pos = 130
+        set osd_warnings_pos = 10538
+        set osd_avg_cell_voltage_pos = 44
+        set osd_pit_ang_pos = 97
+        set osd_rol_ang_pos = 65
+        set osd_disarmed_pos = 267
+        set osd_esc_tmp_pos = 163
+        set osd_esc_rpm_pos = 150
+        set osd_core_temp_pos = 278
+        set osd_rate_profile_name_pos = 2177
+        set osd_pid_profile_name_pos = 2145
+        set osd_profile = 3
+        set osd_displayport_device = AUTO
+        set osd_canvas_width = 30
+        set osd_canvas_height = 13
+    #$ OPTION END
+
+    #--- #$ OPTION BEGIN (UNCHECKED): VTX Tables
+        vtxtable bands 6
+        vtxtable channels 8
+        vtxtable band 1 BOSCAM_A A CUSTOM     0    0    0    0    0    0    0    0
+        vtxtable band 2 BOSCAM_B B CUSTOM     0    0    0    0    0    0    0    0
+        vtxtable band 3 BOSCAM_E E CUSTOM  5705    0    0    0    0    0    0    0
+        vtxtable band 4 FATSHARK F CUSTOM  5740 5760    0 5800    0    0    0    0
+        vtxtable band 5 RACEBAND R CUSTOM  5658 5695 5732 5769 5806 5843 5880 5917
+        vtxtable band 6 LOWBAND  L CUSTOM     0    0    0    0    0    0    0    0
+        vtxtable powerlevels 3
+        vtxtable powervalues 14 23 0
+        vtxtable powerlabels 25 200 0
+    #--- #$ OPTION END
+
+#$ OPTION_GROUP END
+
+# --- MOTOR RPM ---
+#$ OPTION_GROUP BEGIN: (EXCLUSIVE) Motor RPM
+    #$ OPTION BEGIN (UNCHECKED): 30000KV
+        set motor_kv = 30000
+        set motor_poles = 12
+    #$ OPTION END
+    #$ OPTION BEGIN (UNCHECKED): 24000KV
+        set motor_kv = 24000
+        set motor_poles = 12
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+# --- RPM LIMIT ---
+#$ OPTION_GROUP BEGIN: (EXCLUSIVE) RPM Limit
+    #$ OPTION BEGIN (UNCHECKED): 50k
+        set rpm_limit_value = 50000
+    #$ OPTION END
+    #$ OPTION BEGIN (UNCHECKED): 18k
+        set rpm_limit_value = 18000
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+
+# --- RC LINK ---
+#$ OPTION_GROUP BEGIN: Some popular RC Links
+
+    #$ OPTION BEGIN (UNCHECKED): Tracer/ELRS 250Hz
+        # Tracer/ELRS 250Hz
+
+        feature RX_SERIAL
+        set serialrx_provider = CRSF
+
+        #$ INCLUDE: presets/4.3/rc_link/generic/250hz_race.txt
+
+    #$ OPTION END
+
+    #$ OPTION BEGIN (CHECKED): ELRS 500Hz
+        # ERLS 500Hz
+
+        feature RX_SERIAL
+        set serialrx_provider = CRSF
+
+        #$ INCLUDE: presets/4.3/rc_link/generic/500hz_race.txt
+
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): ELRS 500Hz with extra spice (jitter_factor = 0)
+        # ERLS 500Hz
+
+        feature RX_SERIAL
+        set serialrx_provider = CRSF
+
+        #$ INCLUDE: presets/4.3/rc_link/generic/500hz_race.txt
+        set feedforward_jitter_factor = 0
+
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): ELRS 500Hz with lower spice (jitter_factor = 4)
+        # ERLS 500Hz
+
+        feature RX_SERIAL
+        set serialrx_provider = CRSF
+
+        #$ INCLUDE: presets/4.3/rc_link/generic/500hz_race.txt
+        set feedforward_jitter_factor = 4
+
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): ELRS 1000Hz
+        # ELRS 1000Hz
+
+        feature RX_SERIAL
+        set serialrx_provider = CRSF
+
+         #$ INCLUDE: presets/4.3/rc_link/generic/1000hz_race.txt
+
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): Ghost 250Hz
+        # Ghost 250Hz
+
+        feature RX_SERIAL
+        set serialrx_provider = GHST
+
+         #$ INCLUDE:presets/4.3/rc_link/generic/250hz_race.txt
+
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): Ghost 500Hz
+        # Ghost 500Hz
+
+        feature RX_SERIAL
+        set serialrx_provider = GHST
+
+         #$ INCLUDE: presets/4.3/rc_link/generic/500hz_race.txt
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): Secret sauce stick feel
+        set feedforward_jitter_factor = 0
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+
+# --- RATES ---
+#$ OPTION_GROUP BEGIN: Optional Rates
+    #$ OPTION BEGIN (CHECKED): CaptainM's Rates
+        #$ INCLUDE: presets/4.3/rates/defaults.txt
+        set roll_rc_rate = 20
+        set pitch_rc_rate = 20
+        set yaw_rc_rate = 20
+        set roll_expo = 57
+        set pitch_expo = 57
+        set yaw_expo = 57
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): PUH's Rates
+        #$ INCLUDE: presets/4.3/rates/defaults.txt
+
+        set rates_type = BETAFLIGHT
+        set roll_rc_rate = 100
+        set pitch_rc_rate = 80
+        set yaw_rc_rate = 80
+        set roll_srate = 70
+        set pitch_srate = 70
+        set yaw_srate = 70
+    #$ OPTION END
+
+	#$ OPTION BEGIN (UNCHECKED): Gimme all rates!
+		rateprofile 0
+		set rateprofile_name = BF
+		set thr_mid = 50
+		set thr_expo = 0
+		set rates_type = ACTUAL
+		set quickrates_rc_expo = OFF
+		set roll_rc_rate = 7
+		set pitch_rc_rate = 7
+		set yaw_rc_rate = 7
+		set roll_expo = 0
+		set pitch_expo = 0
+		set yaw_expo = 0
+		set roll_srate = 67
+		set pitch_srate = 67
+		set yaw_srate = 67
+		set throttle_limit_type = OFF
+		set throttle_limit_percent = 100
+
+		rateprofile 1
+		set rateprofile_name = CM
+		set thr_mid = 50
+		set thr_expo = 0
+		set rates_type = ACTUAL
+		set quickrates_rc_expo = OFF
+		set roll_rc_rate = 20
+		set pitch_rc_rate = 20
+		set yaw_rc_rate = 20
+		set roll_expo = 57
+		set pitch_expo = 57
+		set yaw_expo = 57
+		set roll_srate = 67
+		set pitch_srate = 67
+		set yaw_srate = 67
+		set throttle_limit_type = OFF
+		set throttle_limit_percent = 100
+
+		rateprofile 2
+		set rateprofile_name = PUH
+		set thr_mid = 50
+		set thr_expo = 0
+		set rates_type = BETAFLIGHT
+		set quickrates_rc_expo = OFF
+		set roll_rc_rate = 100
+		set pitch_rc_rate = 80
+		set yaw_rc_rate = 80
+		set roll_expo = 0
+		set pitch_expo = 0
+		set yaw_expo = 0
+		set roll_srate = 70
+		set pitch_srate = 70
+		set yaw_srate = 70
+		set throttle_limit_type = OFF
+		set throttle_limit_percent = 100
+
+		rateprofile 3
+		set rateprofile_name = DD
+		set thr_mid = 50
+		set thr_expo = 0
+		set rates_type = BETAFLIGHT
+		set quickrates_rc_expo = OFF
+		set roll_rc_rate = 112
+		set pitch_rc_rate = 90
+		set yaw_rc_rate = 80
+		set roll_expo = 0
+		set pitch_expo = 0
+		set yaw_expo = 0
+		set roll_srate = 70
+		set pitch_srate = 70
+		set yaw_srate = 70
+		set throttle_limit_type = OFF
+		set throttle_limit_percent = 100
+    #$ OPTION END
+#$ OPTION_GROUP END
