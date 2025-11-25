@@ -1,4 +1,4 @@
-#$ TITLE: CaptainM Preset Template
+#$ TITLE: CaptainM Preset Templatess
 #$ FIRMWARE_VERSION: 4.5
 #$ CATEGORY: TUNE
 #$ STATUS: COMMUNITY
