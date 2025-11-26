@@ -23,7 +23,7 @@
 #$ DESCRIPTION:
 #$ DESCRIPTION: ### Whoop builds
 #$ DESCRIPTION: - Board: BetaFPV AIO 4in1 & BetaFPV AIO 5in1
-#$ DESCRIPTION: - Motors: BetaFPV 24kv, Hummingbird 30kv, VCI 30kv light
+#$ DESCRIPTION: - Motors: BetaFPV 23kv, Hummingbird 30kv, VCI 30kv light
 #$ DESCRIPTION: - Camera: BetaFPV C3
 
 #$ INCLUDE_WARNING: misc/warnings/en/dshot.txt
@@ -240,6 +240,10 @@
     #$ OPTION END
     #$ OPTION BEGIN (UNCHECKED): 24000KV
         set motor_kv = 24000
+        set motor_poles = 12
+    #$ OPTION END
+    #$ OPTION BEGIN (UNCHECKED): 23000KV
+        set motor_kv = 23000
         set motor_poles = 12
     #$ OPTION END
 #$ OPTION_GROUP END
