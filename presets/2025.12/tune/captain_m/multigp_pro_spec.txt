@@ -159,21 +159,18 @@
 
 # --- MOTOR RPM ---
 #$ OPTION_GROUP BEGIN: (EXCLUSIVE) Motor RPM
-    #$ OPTION BEGIN (UNCHECKED): 1980KV
-        set motor_kv = 1980
-    #$ OPTION END
-    #$ OPTION BEGIN (UNCHECKED): 2050KV
-        set motor_kv = 2050
+    #$ OPTION BEGIN (UNCHECKED): 1350KV
+        set motor_kv = 1350
     #$ OPTION END
 #$ OPTION_GROUP END
 
 # --- RPM LIMIT ---
 #$ OPTION_GROUP BEGIN: (EXCLUSIVE) RPM Limit
-    #$ OPTION BEGIN (UNCHECKED): 50k
-        set rpm_limit_value = 50000
+    #$ OPTION BEGIN (UNCHECKED): 13k (MultiGP)
+        set rpm_limit_value = 13000
     #$ OPTION END
-    #$ OPTION BEGIN (UNCHECKED): 18k
-        set rpm_limit_value = 18000
+    #$ OPTION BEGIN (UNCHECKED): 16k
+        set rpm_limit_value = 16000 (NL spec)
     #$ OPTION END
 #$ OPTION_GROUP END
 

@@ -272,7 +272,7 @@
     #$ OPTION BEGIN (UNCHECKED): 50k
         set rpm_limit_value = 50000
     #$ OPTION END
-    #$ OPTION BEGIN (UNCHECKED): 18k
+    #$ OPTION BEGIN (UNCHECKED): 18k (freedomspec)
         set rpm_limit_value = 18000
     #$ OPTION END
 #$ OPTION_GROUP END
