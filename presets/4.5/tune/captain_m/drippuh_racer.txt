@@ -16,9 +16,20 @@
 #$ DESCRIPTION: - Props OUT
 #$ DESCRIPTION: - Works with HDZero
 #$ DESCRIPTION: - DSHOT600 with bidirectional DSHOT enabled. This is very important.
+#$ DESCRIPTION: - Make sure your **ADC Filter is OFF** in the hardware page of your Radio.
+#$ DESCRIPTION:
 #$ DESCRIPTION: ### ESC settings
 #$ DESCRIPTION: - Set motor timing to AUTO
 #$ DESCRIPTION: - Set PWK to 24-48khz
+#$ DESCRIPTION:
+#$ DESCRIPTION: ### Drippuh HDZero stack build:
+#$ DESCRIPTION: - XT60 pigtail van 45mm (that's total length from the xt60 end to end of stipped pigtail)
+#$ DESCRIPTION: - ESC with low (4.5mm) gummies, plug's up
+#$ DESCRIPTION: - Plastic m3 nut
+#$ DESCRIPTION: - 1mm plastic spacer
+#$ DESCRIPTION: - FC with normal/medium gummies (6.5mm), plugs down, thick part of gummy down)
+#$ DESCRIPTION: - Plastic m3 nut (or 2mm rubber spacer)
+#$ DESCRIPTION: - VTX with extra large gummies (8mm), plugs up, thick gummy part up
 
 #$ INCLUDE_WARNING: misc/warnings/en/dshot.txt
 
@@ -197,6 +208,14 @@
     #$ OPTION BEGIN (UNCHECKED): HDZero Halo ICM6000 specifics
         set motor_pwm_protocol = DSHOT600
     #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): Switchable VTX power (for HDZero) on `UserMode 1`
+        # Enable 9v BEC switching to be able to fully disable VTX
+        # It adds a `User 1` mode, that needs to be enabled in order for the VTX to be powered on. See: https://www.youtube.com/watch?v=dnOV5_n3y4c
+        resource PINIO 1 E03
+        set pinio_config = 1
+        set pinio_box = 40
+    #$ OPTION END
 #$ OPTION_GROUP END
 
 
@@ -242,12 +261,12 @@
         set osd_stat_bitmask = 1090549742
         set osd_canvas_width = 50
         set osd_canvas_height = 18
-   #$ OPTION END
-
-    #$ OPTION BEGIN (UNCHECKED): VTX Tables
-        vtx 0 5 0 0 3 900 1100
-        vtx 1 5 0 0 1 1900 2100
     #$ OPTION END
+
+    #--- #$ OPTION BEGIN (UNCHECKED): VTX Tables
+    #---     vtx 0 5 0 0 3 900 1100
+    #---     vtx 1 5 0 0 1 1900 2100
+    #--- #$ OPTION END
 
 #$ OPTION_GROUP END
 
@@ -376,7 +395,7 @@
         set yaw_srate = 70
     #$ OPTION END
 
-	#$ OPTION BEGIN (?UNCHECKED): Gimme all rates!
+	#$ OPTION BEGIN (UNCHECKED): Gimme all rates!
 		rateprofile 0
 		set rateprofile_name = BF
 		set thr_mid = 50
