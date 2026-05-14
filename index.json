@@ -2688,6 +2688,90 @@
       "priority": 1000000000000
     },
     {
+      "fullPath": "presets/2025.12/tune/captain_m/drippuh_racer.txt",
+      "hash": "772a9470bbc44181f5c11e952abd7dba1ae52697d543a0cd7c2a4c29ade3f190",
+      "title": "CaptainM Drippuh 5\" Racer",
+      "firmware_version": [
+        "2025.12"
+      ],
+      "category": "TUNE",
+      "status": "EXPERIMENTAL",
+      "keywords": [
+        "6S",
+        "race",
+        "racing",
+        "5 inch",
+        "5\"",
+        "drippuh"
+      ],
+      "author": "Captain M",
+      "force_options_review": true,
+      "priority": 1000000000000
+    },
+    {
+      "fullPath": "presets/2025.12/tune/captain_m/my_drippuh_racer.txt",
+      "hash": "e581c126070a69189b62e7e7f29a832740b78bdcc0ddca3fbaffe1ab74365413",
+      "title": "DRIPPUH Race  5\"",
+      "firmware_version": [
+        "2025.12"
+      ],
+      "category": "TUNE",
+      "status": "EXPERIMENTAL",
+      "keywords": [
+        "DRIPPUH",
+        "race",
+        "5 inch",
+        "5\"",
+        "sanderpuh",
+        "puh",
+        "ultralite",
+        "lightweight",
+        "nano",
+        "2024 sliders"
+      ],
+      "author": "SanderPuh",
+      "priority": 1000000000000
+    },
+    {
+      "fullPath": "presets/2025.12/tune/captain_m/template.txt",
+      "hash": "7a90b7f8b53c320958e14b79baab49761f61d3c640425c1ebd871f1e35388ab4",
+      "title": "CaptainM Preset Templatess",
+      "firmware_version": [
+        "2025.12"
+      ],
+      "category": "TUNE",
+      "status": "COMMUNITY",
+      "keywords": [
+        "6S",
+        "race",
+        "racing",
+        "5 inch",
+        "5\"",
+        "drippuh"
+      ],
+      "author": "Captain M",
+      "priority": 1000000000000
+    },
+    {
+      "fullPath": "presets/2025.12/tune/captain_m/whoop.txt",
+      "hash": "8c8b469035f6a18d50975e3498e9c8a25ee6093654bc4d6e5130ef72cec27424",
+      "title": "CaptainM Whoop",
+      "firmware_version": [
+        "2025.12"
+      ],
+      "category": "TUNE",
+      "status": "EXPERIMENTAL",
+      "keywords": [
+        "1S",
+        "race",
+        "racing",
+        "whoop"
+      ],
+      "author": "Captain M",
+      "force_options_review": true,
+      "priority": 1000000000000
+    },
+    {
       "fullPath": "presets/2025.12/tune/defaults.txt",
       "hash": "45ed771374ec26cb8e755e2db3647ba01229c72daa5aad7b3b66764f2ba25317",
       "title": "Betaflight 2025.12 TUNE defaults",
@@ -10832,7 +10916,7 @@
     },
     {
       "fullPath": "presets/4.5/tune/captain_m/drippuh_racer.txt",
-      "hash": "53efbed1af5292a5b35aff3529bed7eafba4081ce4b19e7598b0cbabdb86b9e8",
+      "hash": "1549976cac500dc0aa523340dd7754e2753b4256b9118cd1d41ed3f53a6a25aa",
       "title": "CaptainM Drippuh 5\" Racer",
       "firmware_version": [
         "4.5"
@@ -10897,7 +10981,7 @@
     },
     {
       "fullPath": "presets/4.5/tune/captain_m/whoop.txt",
-      "hash": "de7672ca76ac017f272a202a1462892085b2b37f4a7fdc433bc7e64d9dc824ed",
+      "hash": "7b9aa2faacc0dfb63c835e59a9e4cba692915fc922cd2b5b556ad2ac46e12515",
       "title": "CaptainM Whoop",
       "firmware_version": [
         "4.5"
