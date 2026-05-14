@@ -1,0 +1,238 @@
+#$ TITLE: DRIPPUH Race  5"
+#$ FIRMWARE_VERSION: 2025.12
+#$ CATEGORY: TUNE
+#$ STATUS:  EXPERIMENTAL
+#$ KEYWORDS: DRIPPUH, race, 5 inch, 5", sanderpuh, puh, ultralite, lightweight, nano, 2024 sliders
+#$ AUTHOR: SanderPuh
+
+#$ PARSER: MARKED
+
+#$ DESCRIPTION:
+#$ DESCRIPTION: <img src="https://droneshop.nl/pub/media/catalog/product/cache/57e05a978a5497b203ff83c2f6f349f4/d/r/drippuh-5-inch-racing-drone-hdzero-pnp-2.jpg" style="max-width: 100%; margin-left: auto; margin-right: auto; display: block;"/>
+#$ DESCRIPTION: <h1>DRIPPUH race</h1>
+#$ DESCRIPTION: <br>
+#$ DESCRIPTION:
+#$ DESCRIPTION: This racing tune was developed by Marlin FPV to suit my new DRIPPUH 5" racer project. [DRIPPUH](https://droneshop.nl/drippuh-drone-racing-frame)
+#$ DESCRIPTION: <br>
+#$ DESCRIPTION:
+#$ DESCRIPTION: This tune 'SHOULD' work with other ultralite 5" frames. For best performance set ESC PWM frequency to 48Khz locked and timing to 23 degrees.
+#$ DESCRIPTION: The tune is slider based to make it easier to adjust for personal taste but use at your own risk.
+#$ DESCRIPTION:
+#$ DESCRIPTION: <br>
+#$ DESCRIPTION:
+#$ DESCRIPTION: ## Things to note:
+#$ DESCRIPTION: - **YOU HAVE TO USE RPM FILTERING WITH THIS TUNE!** Failure to do so might result in fire 🔥
+#$ DESCRIPTION: - Regarding DShot600: if your setup has errors in the motor tab using bidirectional DShot, change to **8k/4k and DShot300**
+#$ DESCRIPTION: - Also this should be applied to a clean flash after you've setup your rates, switches, vtx tables etc.
+#$ DESCRIPTION: - To test, arm the quad with props on, it should **sound clean with no grinding**. If it passes that then hover test and check motor temps.
+#$ DESCRIPTION: - **If anything is off, don't fly it!!**
+#$ DESCRIPTION:
+#$ DESCRIPTION: <br>
+#$ DESCRIPTION:
+#$ DESCRIPTION: ## Second note... Radio links:
+#$ DESCRIPTION: 1. Make sure your radio firmware is up to date using either EdgeTX or OpenTX
+#$ DESCRIPTION: 1. Make sure your **ADC Filter is OFF** in the hardware page
+#$ DESCRIPTION: 1. Radio link rate is automatically detected and adjusted for with links above 150hz
+
+#$ DISCUSSION: https://github.com/sanderpuh/firmware-presets/discussions
+
+#$ INCLUDE_WARNING: misc/warnings/en/rpm_filters.txt
+#$ INCLUDE: presets/2025.12/tune/defaults.txt
+#$ INCLUDE: presets/2025.12/rc_link/defaults.txt
+#$ INCLUDE: presets/4.5/filters/defaults.txt
+
+
+# -- Tune --
+#$ OPTION_GROUP BEGIN (EXCLUSIVE): Tune options
+    #$ OPTION BEGIN (CHECKED): Current PUH tune
+        # -- Gyro Lowpass Filters --
+        set gyro_lpf1_static_hz = 0
+        set gyro_lpf1_dyn_min_hz = 500
+        set gyro_lpf1_dyn_max_hz = 1000
+        set simplified_gyro_filter = OFF
+
+        # -- Gyro Dynamic Notches --
+        set dyn_notch_count = 1
+        set dyn_notch_q = 500
+        set dyn_notch_min_hz = 125
+        set dyn_notch_max_hz = 650
+
+        # -- Dterm Filtering --
+        set dterm_lpf1_dyn_expo = 10
+
+        # -- RPM Filtering --
+        set rpm_filter_fade_range_hz = 100
+        set rpm_filter_weights = 100,50,50
+
+        # -- PID Values --
+        set simplified_d_gain = 70
+        set simplified_pi_gain = 90
+        set simplified_feedforward_gain = 110
+        set simplified_d_max_gain = 200
+        set simplified_i_gain = 65
+        set simplified_pitch_pi_gain = 105
+        simplified_tuning apply
+
+        # -- Feedforward --
+        set feedforward_max_rate_limit = 100
+
+        # -- TPA --
+        set tpa_rate = 70
+        set tpa_breakpoint = 1250
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): Old PUH tune
+        # -- Gyro Lowpass Filters --
+        set gyro_lpf1_static_hz = 0
+        set gyro_lpf1_dyn_min_hz = 500
+        set gyro_lpf1_dyn_max_hz = 1000
+        set simplified_gyro_filter = OFF
+
+        # -- Gyro Dynamic Notches --
+        set dyn_notch_count = 2
+        set dyn_notch_q = 450
+        set dyn_notch_min_hz = 125
+        set dyn_notch_max_hz = 650
+
+        # -- Dterm Filtering --
+        set dterm_lpf1_dyn_expo = 7
+
+        # -- RPM Filtering --
+        set rpm_filter_fade_range_hz = 100
+
+        # -- PID Values --
+        set simplified_d_gain = 70
+        set simplified_pi_gain = 85
+        set simplified_feedforward_gain = 105
+        set simplified_d_max_gain = 200
+        set simplified_i_gain = 120
+        set simplified_pitch_pi_gain = 105
+        simplified_tuning apply
+
+        # -- Feedforward --
+        set feedforward_max_rate_limit = 100
+
+        # -- TPA --
+        set tpa_rate = 70
+        set tpa_breakpoint = 1250
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+
+# --- Dshot ---
+#$ OPTION_GROUP BEGIN (EXCLUSIVE): Dshot settings
+    #$ OPTION BEGIN (CHECKED): Dshot600
+        set dshot_bidir = ON
+        set motor_pwm_protocol = DSHOT600
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): Dshot300
+        set dshot_bidir = ON
+        set motor_pwm_protocol = Dshot300
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+
+# --- CUSTOM OPTIONS ---
+#$ OPTION_GROUP BEGIN: Custom Options
+    #$ OPTION BEGIN (UNCHECKED): Miscellaneous PUH settings
+        # -- Misc --
+        set yaw_spin_recovery = AUTO
+        set thrust_linear = 0
+        # set throttle_boost = 2
+        set throttle_boost = 3
+        set small_angle = 180
+        set min_check = 1005
+        set max_check = 1995
+        set min_throttle = 1020
+
+        # -- Antigravity --
+        # set anti_gravity_gain = 90
+        set anti_gravity_gain = 90
+
+        # -- iTerm --
+        # set iterm_relax_cutoff = 30
+        set iterm_relax_cutoff = 20
+
+        # -- PIDsum Limits --
+        set iterm_limit = 500
+        set pidsum_limit_yaw = 1000
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): Vbat Sag Compensation
+        set vbat_sag_compensation = 100
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): Motors reversed
+        set yaw_motors_reversed = ON
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): Bosch (BMI) gyro - EXPERIMENTAL
+        set gyro_lpf1_dyn_min_hz = 0
+        set gyro_lpf1_dyn_max_hz = 0
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+
+# --- RC LINK ---
+#$ OPTION_GROUP BEGIN (EXCLUSIVE): Radio links
+    #$ OPTION BEGIN (CHECKED): CRSF/ELRS
+        feature RX_SERIAL
+        set serialrx_provider = CRSF
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): Ghost
+        feature RX_SERIAL
+        set serialrx_provider = GHST
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): SBUS
+        feature RX_SERIAL
+        set serialrx_provider = SBUS
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+#$ OPTION_GROUP BEGIN (EXCLUSIVE): Stick feel aka Jitter reduction
+    #$ OPTION BEGIN (UNCHECKED): Standard feel
+        set feedforward_jitter_factor = 7
+    #$ OPTION END
+
+    #$ OPTION BEGIN (CHECKED): Racy feel
+        set feedforward_jitter_factor = 3
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): Sharpest feel
+        set feedforward_jitter_factor = 0
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+
+# --- RATES ---
+#$ OPTION_GROUP BEGIN: Optional Rates
+    #$ OPTION BEGIN (UNCHECKED): CaptainM's Rates
+        #$ INCLUDE: presets/4.3/rates/defaults.txt
+        set roll_rc_rate = 20
+        set pitch_rc_rate = 20
+        set yaw_rc_rate = 20
+        set roll_expo = 57
+        set pitch_expo = 57
+        set yaw_expo = 57
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): PUH's Rates
+        #$ INCLUDE: presets/4.3/rates/defaults.txt
+        set rates_type = BETAFLIGHT
+        set roll_rc_rate = 100
+        set pitch_rc_rate = 80
+        set yaw_rc_rate = 80
+        set roll_srate = 70
+        set pitch_srate = 70
+        set yaw_srate = 70
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): Throttle curve for 6s racer
+        set thr_mid = 25
+        set thr_expo = 65
+        set thr_hover = 25
+     #$ OPTION END
+#$ OPTION_GROUP END
