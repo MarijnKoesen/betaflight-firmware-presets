@@ -20,7 +20,7 @@
 #$ DESCRIPTION:
 #$ DESCRIPTION: ### ESC settings
 #$ DESCRIPTION: - Set motor timing to AUTO
-#$ DESCRIPTION: - Set PWK to 24-48khz
+#$ DESCRIPTION: - Set PWM to 24-48khz
 #$ DESCRIPTION:
 #$ DESCRIPTION: ### Drippuh HDZero stack build:
 #$ DESCRIPTION: - XT60 pigtail van 45mm (that's total length from the xt60 end to end of stipped pigtail)
@@ -235,7 +235,7 @@
     #$ OPTION END
 
     #$ OPTION BEGIN (UNCHECKED): OSD
-        #$ INCLUDE: presets/4.4/osd/defaults.txt
+        #$ INCLUDE: presets/2025.12/osd/defaults.txt
 
         set osd_warn_bitmask = 294911
         set osd_vbat_pos = 11270
@@ -282,19 +282,11 @@
 
 # --- RC LINK ---
 #$ OPTION_GROUP BEGIN (EXCLUSIVE): Radio links
-    #$ OPTION BEGIN (CHECKED): CRSF/ELRS
+    #$ OPTION BEGIN (CHECKED): CRSF/ELRS 500Hz
         feature RX_SERIAL
         set serialrx_provider = CRSF
-    #$ OPTION END
-
-    #$ OPTION BEGIN (UNCHECKED): Ghost
-        feature RX_SERIAL
-        set serialrx_provider = GHST
-    #$ OPTION END
-
-    #$ OPTION BEGIN (UNCHECKED): SBUS
-        feature RX_SERIAL
-        set serialrx_provider = SBUS
+        
+        #$ INCLUDE: presets/2025.12/rc_link/generic/500hz_race.txt
     #$ OPTION END
 #$ OPTION_GROUP END
 
@@ -316,7 +308,7 @@
 # --- RATES ---
 #$ OPTION_GROUP BEGIN: Optional Rates
     #$ OPTION BEGIN (CHECKED): CaptainM's Rates
-        #$ INCLUDE: presets/4.3/rates/defaults.txt
+        #$ INCLUDE: presets/2025.12/rates/defaults.txt
         set roll_rc_rate = 20
         set pitch_rc_rate = 20
         set yaw_rc_rate = 20
@@ -326,7 +318,7 @@
     #$ OPTION END
 
     #$ OPTION BEGIN (UNCHECKED): PUH's Rates
-        #$ INCLUDE: presets/4.3/rates/defaults.txt
+        #$ INCLUDE: presets/2025.12/rates/defaults.txt
 
         set rates_type = BETAFLIGHT
         set roll_rc_rate = 100

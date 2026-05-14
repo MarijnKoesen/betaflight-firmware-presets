@@ -1797,7 +1797,7 @@
     },
     {
       "fullPath": "presets/2025.12/tune/captain_m/drippuh_racer_2025_12.txt",
-      "hash": "772a9470bbc44181f5c11e952abd7dba1ae52697d543a0cd7c2a4c29ade3f190",
+      "hash": "419e94861b65064944558151b3830cd3d7f40cdc010fe490021ff9af2ab7b9a3",
       "title": "CaptainM Drippuh 5\" Racer",
       "firmware_version": [
         "2025.12"
@@ -1814,30 +1814,6 @@
       ],
       "author": "Captain M",
       "force_options_review": true,
-      "priority": 1000000000000
-    },
-    {
-      "fullPath": "presets/2025.12/tune/captain_m/my_drippuh_racer_2025_12.txt",
-      "hash": "e581c126070a69189b62e7e7f29a832740b78bdcc0ddca3fbaffe1ab74365413",
-      "title": "DRIPPUH Race  5\"",
-      "firmware_version": [
-        "2025.12"
-      ],
-      "category": "TUNE",
-      "status": "EXPERIMENTAL",
-      "keywords": [
-        "DRIPPUH",
-        "race",
-        "5 inch",
-        "5\"",
-        "sanderpuh",
-        "puh",
-        "ultralite",
-        "lightweight",
-        "nano",
-        "2024 sliders"
-      ],
-      "author": "SanderPuh",
       "priority": 1000000000000
     },
     {
