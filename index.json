@@ -1797,8 +1797,29 @@
     },
     {
       "fullPath": "presets/2025.12/tune/captain_m/drippuh_racer_2025_12.txt",
-      "hash": "419e94861b65064944558151b3830cd3d7f40cdc010fe490021ff9af2ab7b9a3",
+      "hash": "fe42f3e5bf1e9126b538719d2c324a701f851e2f61e8b745b080dc376cb3918d",
       "title": "CaptainM Drippuh 5\" Racer",
+      "firmware_version": [
+        "2025.12"
+      ],
+      "category": "TUNE",
+      "status": "EXPERIMENTAL",
+      "keywords": [
+        "6S",
+        "race",
+        "racing",
+        "5 inch",
+        "5\"",
+        "drippuh"
+      ],
+      "author": "Captain M",
+      "force_options_review": true,
+      "priority": 1000000000000
+    },
+    {
+      "fullPath": "presets/2025.12/tune/captain_m/multigp_pro_spec.txt",
+      "hash": "4082b199e3a6ee5c914ce2783cad3836c0ffdd6e5d700ecf556084aca4b50092",
+      "title": "CaptainM MultiGP Pro Spec 7\" Racer",
       "firmware_version": [
         "2025.12"
       ],
@@ -1838,7 +1859,7 @@
     },
     {
       "fullPath": "presets/2025.12/tune/captain_m/whoop_2025_12.txt",
-      "hash": "8c8b469035f6a18d50975e3498e9c8a25ee6093654bc4d6e5130ef72cec27424",
+      "hash": "3db67470a247b1a4ec8731a717e23c689b9d40254f5405b08f34b055b903f060",
       "title": "CaptainM Whoop",
       "firmware_version": [
         "2025.12"

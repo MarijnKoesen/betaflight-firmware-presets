@@ -1,0 +1,309 @@
+#$ TITLE: CaptainM MultiGP Pro Spec 7" Racer
+#$ FIRMWARE_VERSION: 2025.12
+#$ CATEGORY: TUNE
+#$ STATUS: EXPERIMENTAL
+#$ KEYWORDS: 6S, race, racing, 5 inch, 5", drippuh
+#$ AUTHOR: Captain M
+
+#$ PARSER: MARKED
+#$ FORCE_OPTIONS_REVIEW: TRUE
+
+#$ DESCRIPTION: Version 0.0.1
+#$ DESCRIPTION: This is the Armando 'MultiGP PRO Spec 7"' tune with a bit of my personal additions (e.g. for OSD, rates etc). USE AT YOUR OWN RISK.
+#$ DESCRIPTION:
+#$ DESCRIPTION: ### Requirements:
+#$ DESCRIPTION: - 7 inch MultiGP PRO Spec 7" quad with 6S packs.
+#$ DESCRIPTION: - Props OUT
+#$ DESCRIPTION: - Works with HDZero
+#$ DESCRIPTION: - DSHOT600 with bidirectional DSHOT enabled. This is very important.
+#$ DESCRIPTION: - Make sure your **ADC Filter is OFF** in the hardware page of your Radio.
+#$ DESCRIPTION:
+#$ DESCRIPTION: ### ESC settings
+#$ DESCRIPTION: - Set motor timing to AUTO
+#$ DESCRIPTION: - Set PWM to 24-48khz
+#$ DESCRIPTION:
+#$ DESCRIPTION: ### HDZero stack build:
+#$ DESCRIPTION: - XT60 pigtail van 45mm (that's total length from the xt60 end to end of stipped pigtail)
+#$ DESCRIPTION: - ESC with low (4.5mm) gummies, plug's up
+#$ DESCRIPTION: - Plastic m3 nut
+#$ DESCRIPTION: - 1mm plastic spacer
+#$ DESCRIPTION: - FC with normal/medium gummies (6.5mm), plugs down, thick part of gummy down)
+#$ DESCRIPTION: - Plastic m3 nut (or 2mm rubber spacer)
+#$ DESCRIPTION: - VTX with extra large gummies (8mm), plugs up, thick gummy part up
+
+#$ INCLUDE_WARNING: misc/warnings/en/dshot.txt
+
+#$ OPTION_GROUP BEGIN: (EXCLUSIVE) Tune options
+  #$ OPTION BEGIN (CHECKED): Armando's Tune
+        #$ INCLUDE: presets/2025.12/tune/defaults.txt
+        #$ INCLUDE: presets/4.5/filters/defaults.txt
+
+        set dshot_bidir = ON
+        set motor_pwm_protocol = DSHOT600
+        set dyn_notch_count = 2
+        set dyn_notch_max_hz = 550
+        set simplified_gyro_filter_multiplier = 60
+        set rpm_filter_weights = 100,50,100
+
+        set anti_gravity_gain = 90
+        set iterm_relax_cutoff = 10
+        set pidsum_limit = 1000
+        set pidsum_limit_yaw = 1000
+        set yaw_lowpass_hz = 125
+        set thrust_linear = 20
+
+        set simplified_master_multiplier = 160
+        set simplified_i_gain = 65
+        set simplified_d_gain = 150
+        set simplified_d_max_gain = 0
+        set simplified_feedforward_gain = 115
+        set simplified_pitch_d_gain = 110
+        set simplified_dterm_filter_multiplier = 120
+
+        simplified_tuning apply
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+#$ OPTION_GROUP BEGIN: Flight Controller
+    #$ OPTION BEGIN (CHECKED): Base settings
+        feature -AIRMODE
+        beacon RX_LOST
+        set dshot_bidir = ON
+        set debug_mode = MULTI_GYRO_SCALED
+
+        set vcd_video_system = HD # Set HD OSD
+        set osd_displayport_device = MSP # Map to displayport
+
+        set small_angle = 180 # max arm angle
+
+        # vtxtable
+        vtxtable bands 6
+        vtxtable channels 8
+        vtxtable band 1 BOSCAM_A A CUSTOM     0    0    0    0    0    0    0    0
+        vtxtable band 2 BOSCAM_B B CUSTOM     0    0    0    0    0    0    0    0
+        vtxtable band 3 BOSCAM_E E CUSTOM  5705    0    0    0    0    0    0    0
+        vtxtable band 4 FATSHARK F CUSTOM  5740 5760    0 5800    0    0    0    0
+        vtxtable band 5 RACEBAND R CUSTOM  5658 5695 5732 5769 5806 5843 5880 5917
+        vtxtable band 6 LOWBAND  L CUSTOM     0    0    0    0    0    0    0    0
+        vtxtable powerlevels 3
+        vtxtable powervalues 14 23 0
+        vtxtable powerlabels 25 200 0
+    #$ OPTION END
+
+    #$ OPTION BEGIN (CHECKED): Disable colored warnings (not compatible with HDZERO)
+        set displayport_msp_fonts = 0,0,0,0
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): HDZero Halo MPU6000 specifics
+        set motor_pwm_protocol = DSHOT600
+        # set gyro_to_use = SECOND
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): HDZero Halo ICM6000 specifics
+        set motor_pwm_protocol = DSHOT600
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): Switchable VTX power (for HDZero) on `UserMode 1`
+        # Enable 9v BEC switching to be able to fully disable VTX
+        # It adds a `User 1` mode, that needs to be enabled in order for the VTX to be powered on. See: https://www.youtube.com/watch?v=dnOV5_n3y4c
+        resource PINIO 1 E03
+        set pinio_config = 1
+        set pinio_box = 40
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+
+# --- FEATURES ---
+#$ OPTION_GROUP BEGIN: Features
+    #$ OPTION BEGIN (CHECKED): Modes & Adjustments
+        #$ INCLUDE: presets/4.3/modes/defaults.txt
+
+        aux 0 0 0 1300 2100 0 0
+        aux 1 1 1 1675 2100 0 0
+        aux 2 13 3 1300 2100 0 0
+        aux 3 28 1 900 1275 0 0
+        aux 4 28 1 1675 2100 0 0
+        aux 5 35 2 1675 2100 0 0
+        aux 6 36 6 1675 2100 0 0
+
+        # Set OSD based on arm status
+        adjrange 0 0 0 925 2075 29 0 0 0
+    #$ OPTION END
+
+    #$ OPTION BEGIN (CHECKED): Reversed Motors (props-out)
+        set yaw_motors_reversed = ON
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): OSD
+        #$ INCLUDE: presets/2025.12/osd/defaults.txt
+
+        set osd_warn_bitmask = 294911
+        set osd_vbat_pos = 11270
+        set osd_tim_2_pos = 11302
+        set osd_flymode_pos = 10790
+        set osd_vtx_channel_pos = 2165
+        set osd_craft_name_pos = 10758
+        set osd_pilot_name_pos = 518
+        set osd_warnings_pos = 14773
+        set osd_disarmed_pos = 10549
+        set osd_rtc_date_time_pos = 2618
+        set osd_core_temp_pos = 70
+        set osd_log_status_pos = 236
+        set osd_profile_name_pos = 486
+        set osd_sys_bitrate_pos = 134
+        set osd_sys_vtx_temp_pos = 2150
+        set osd_stat_bitmask = 1090549742
+    #$ OPTION END
+
+#$ OPTION_GROUP END
+
+# --- MOTOR RPM ---
+#$ OPTION_GROUP BEGIN: (EXCLUSIVE) Motor RPM
+    #$ OPTION BEGIN (UNCHECKED): 1980KV
+        set motor_kv = 1980
+    #$ OPTION END
+    #$ OPTION BEGIN (UNCHECKED): 2050KV
+        set motor_kv = 2050
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+# --- RPM LIMIT ---
+#$ OPTION_GROUP BEGIN: (EXCLUSIVE) RPM Limit
+    #$ OPTION BEGIN (UNCHECKED): 50k
+        set rpm_limit_value = 50000
+    #$ OPTION END
+    #$ OPTION BEGIN (UNCHECKED): 18k
+        set rpm_limit_value = 18000
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+
+# --- RC LINK ---
+#$ OPTION_GROUP BEGIN: (EXCLUSIVE) Radio links
+    #$ OPTION BEGIN (CHECKED): CRSF/ELRS 500Hz
+        feature RX_SERIAL
+        set serialrx_provider = CRSF
+        
+        #$ INCLUDE: presets/2025.12/rc_link/generic/500hz_race.txt
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+#$ OPTION_GROUP BEGIN: (EXCLUSIVE) Stick feel aka Jitter reduction
+    #$ OPTION BEGIN (UNCHECKED): Standard feel
+        set feedforward_jitter_factor = 7
+    #$ OPTION END
+
+    #$ OPTION BEGIN (CHECKED): Racy feel
+        set feedforward_jitter_factor = 3
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): Sharpest feel
+        set feedforward_jitter_factor = 0
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+
+# --- RATES ---
+#$ OPTION_GROUP BEGIN (EXCLUSIVE): Optional Rates
+    #$ OPTION BEGIN (CHECKED): CaptainM's Rates
+        #$ INCLUDE: presets/2025.12/rates/defaults.txt
+        set roll_rc_rate = 20
+        set pitch_rc_rate = 20
+        set yaw_rc_rate = 20
+        set roll_expo = 57
+        set pitch_expo = 57
+        set yaw_expo = 57
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): PUH's Rates
+        #$ INCLUDE: presets/2025.12/rates/defaults.txt
+
+        set rates_type = BETAFLIGHT
+        set roll_rc_rate = 100
+        set pitch_rc_rate = 80
+        set yaw_rc_rate = 80
+        set roll_srate = 70
+        set pitch_srate = 70
+        set yaw_srate = 70
+    #$ OPTION END
+
+	#$ OPTION BEGIN (UNCHECKED): Gimme all rates!
+		rateprofile 0
+		set rateprofile_name = BF
+		set thr_mid = 50
+		set thr_expo = 0
+		set rates_type = ACTUAL
+		set quickrates_rc_expo = OFF
+		set roll_rc_rate = 7
+		set pitch_rc_rate = 7
+		set yaw_rc_rate = 7
+		set roll_expo = 0
+		set pitch_expo = 0
+		set yaw_expo = 0
+		set roll_srate = 67
+		set pitch_srate = 67
+		set yaw_srate = 67
+		set throttle_limit_type = OFF
+		set throttle_limit_percent = 100
+
+		rateprofile 1
+		set rateprofile_name = CM
+		set thr_mid = 50
+		set thr_expo = 0
+		set rates_type = ACTUAL
+		set quickrates_rc_expo = OFF
+		set roll_rc_rate = 20
+		set pitch_rc_rate = 20
+		set yaw_rc_rate = 20
+		set roll_expo = 57
+		set pitch_expo = 57
+		set yaw_expo = 57
+		set roll_srate = 67
+		set pitch_srate = 67
+		set yaw_srate = 67
+		set throttle_limit_type = OFF
+		set throttle_limit_percent = 100
+
+		rateprofile 2
+		set rateprofile_name = PUH
+		set thr_mid = 50
+		set thr_expo = 0
+		set rates_type = BETAFLIGHT
+		set quickrates_rc_expo = OFF
+		set roll_rc_rate = 100
+		set pitch_rc_rate = 80
+		set yaw_rc_rate = 80
+		set roll_expo = 0
+		set pitch_expo = 0
+		set yaw_expo = 0
+		set roll_srate = 70
+		set pitch_srate = 70
+		set yaw_srate = 70
+		set throttle_limit_type = OFF
+		set throttle_limit_percent = 100
+
+		rateprofile 3
+		set rateprofile_name = DD
+		set thr_mid = 50
+		set thr_expo = 0
+		set rates_type = BETAFLIGHT
+		set quickrates_rc_expo = OFF
+		set roll_rc_rate = 112
+		set pitch_rc_rate = 90
+		set yaw_rc_rate = 80
+		set roll_expo = 0
+		set pitch_expo = 0
+		set yaw_expo = 0
+		set roll_srate = 70
+		set pitch_srate = 70
+		set yaw_srate = 70
+		set throttle_limit_type = OFF
+		set throttle_limit_percent = 100
+    #$ OPTION END
+
+    #$ OPTION BEGIN (UNCHECKED): Throttle curve for 6s racer
+        set thr_mid = 25
+        set thr_expo = 65
+        set thr_hover = 25
+     #$ OPTION END
+#$ OPTION_GROUP END

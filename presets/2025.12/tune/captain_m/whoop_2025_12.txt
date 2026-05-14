@@ -211,8 +211,6 @@
         set osd_pid_profile_name_pos = 2145
         set osd_profile = 3
         set osd_displayport_device = AUTO
-        set osd_canvas_width = 30
-        set osd_canvas_height = 13
     #$ OPTION END
 
 #$ OPTION_GROUP END
