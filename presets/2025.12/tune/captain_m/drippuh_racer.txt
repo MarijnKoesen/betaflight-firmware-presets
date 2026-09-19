@@ -34,6 +34,31 @@
 #$ INCLUDE_WARNING: misc/warnings/en/dshot.txt
 
 #$ OPTION_GROUP BEGIN (EXCLUSIVE): Tune options
+# ============================================================================
+# KEEP IN SYNC
+#
+# This preset exists once per firmware version. This is the 2025.12 copy:
+#
+#   presets/4.5/tune/captain_m/drippuh_racer.txt            (4.5)
+#   presets/2025.12/tune/captain_m/drippuh_racer_2025_12.txt (2025.12)
+#
+# When you change one, make the same change in the other(s). Keep the shared
+# logic identical: aux/vtx/rxfail rules, modes, OSD element positions, craft
+# names and the Switchable Quads bands.
+#
+# Do NOT copy version-specific bits across:
+#   - #$ INCLUDE paths (each points at its own firmware's defaults)
+#   - #$ FIRMWARE_VERSION
+#   - settings renamed between versions (e.g. simplified_dmax_gain in 4.5 vs
+#     simplified_d_max_gain in 2025.12)
+#   - debug_mode (GYRO_SCALED in 4.5, MULTI_GYRO_SCALED in 2025.12)
+#
+# These lines start with a single '#', not '#$', so the Betaflight
+# Configurator ignores them and they are not shown to the user.
+# ============================================================================
+
+
+#$ OPTION_GROUP BEGIN: (EXCLUSIVE) Tune options
   #$ OPTION BEGIN (UNCHECKED): Marlin PRO tune
         #$ INCLUDE: presets/2025.12/tune/defaults.txt
         #$ INCLUDE: presets/4.5/filters/defaults.txt
