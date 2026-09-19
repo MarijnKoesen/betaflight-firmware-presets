@@ -38,8 +38,9 @@
 #
 # This preset exists once per firmware version. This is the 4.5 copy:
 #
-#   presets/4.5/tune/captain_m/drippuh_racer.txt            (4.5)
-#   presets/2025.12/tune/captain_m/drippuh_racer_2025_12.txt (2025.12)
+#   presets/4.5/tune/captain_m/drippuh_racer.txt     (4.5)
+#   presets/2025.12/tune/captain_m/drippuh_racer.txt (2025.12)
+#   presets/2026.6/tune/captain_m/drippuh_racer.txt  (2026.6)
 #
 # When you change one, make the same change in the other(s). Keep the shared
 # logic identical: aux/vtx/rxfail rules, modes, OSD element positions, craft
@@ -50,7 +51,7 @@
 #   - #$ FIRMWARE_VERSION
 #   - settings renamed between versions (e.g. simplified_dmax_gain in 4.5 vs
 #     simplified_d_max_gain in 2025.12)
-#   - debug_mode (GYRO_SCALED in 4.5, MULTI_GYRO_SCALED in 2025.12)
+#   - debug_mode (GYRO_SCALED in 4.5, MULTI_GYRO_SCALED in 2025.12+)
 #
 #
 # --- CLI GOTCHAS (learned the hard way, do not re-derive) ---

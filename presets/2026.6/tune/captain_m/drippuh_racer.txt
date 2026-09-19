@@ -1,5 +1,5 @@
 #$ TITLE: CaptainM Drippuh 5" Racer
-#$ FIRMWARE_VERSION: 2025.12
+#$ FIRMWARE_VERSION: 2026.6
 #$ CATEGORY: TUNE
 #$ STATUS: EXPERIMENTAL
 #$ KEYWORDS: 6S, race, racing, 5 inch, 5", drippuh
@@ -36,7 +36,7 @@
 # ============================================================================
 # KEEP IN SYNC
 #
-# This preset exists once per firmware version. This is the 2025.12 copy:
+# This preset exists once per firmware version. This is the 2026.6 copy:
 #
 #   presets/4.5/tune/captain_m/drippuh_racer.txt     (4.5)
 #   presets/2025.12/tune/captain_m/drippuh_racer.txt (2025.12)
@@ -79,8 +79,8 @@
 
 #$ OPTION_GROUP BEGIN: (EXCLUSIVE) Tune options
   #$ OPTION BEGIN (UNCHECKED): Marlin PRO tune
-        #$ INCLUDE: presets/2025.12/tune/defaults.txt
-        #$ INCLUDE: presets/4.5/filters/defaults.txt
+        #$ INCLUDE: presets/2026.6/tune/defaults.txt
+        #$ INCLUDE: presets/2026.6/filters/defaults.txt
 
         # -- Gyro Lowpass Filters --
         set gyro_lpf1_static_hz = 0
@@ -123,8 +123,8 @@
     #$ OPTION END
 
     #$ OPTION BEGIN (CHECKED): New Marlin tune
-        #$ INCLUDE: presets/2025.12/tune/defaults.txt
-        #$ INCLUDE: presets/4.5/filters/defaults.txt
+        #$ INCLUDE: presets/2026.6/tune/defaults.txt
+        #$ INCLUDE: presets/2026.6/filters/defaults.txt
 
         # -- Gyro Lowpass Filters --
         set gyro_lpf1_static_hz = 0
@@ -161,8 +161,8 @@
     #$ OPTION END
 
     #$ OPTION BEGIN (UNCHECKED): Old Marlin tune
-        #$ INCLUDE: presets/2025.12/tune/defaults.txt
-        #$ INCLUDE: presets/4.5/filters/defaults.txt
+        #$ INCLUDE: presets/2026.6/tune/defaults.txt
+        #$ INCLUDE: presets/2026.6/filters/defaults.txt
 
         # -- Gyro Lowpass Filters --
         set gyro_lpf1_static_hz = 0
@@ -282,7 +282,7 @@
     #$ OPTION END
 
     #$ OPTION BEGIN (UNCHECKED): OSD
-        #$ INCLUDE: presets/2025.12/osd/defaults.txt
+        #$ INCLUDE: presets/2026.6/osd/defaults.txt
 
         set osd_warn_bitmask = 294911
         set osd_vbat_pos = 11270
@@ -443,7 +443,7 @@
 # --- RATES ---
 #$ OPTION_GROUP BEGIN: Optional Rates
     #$ OPTION BEGIN (CHECKED): CaptainM's Rates
-        #$ INCLUDE: presets/4.3/rates/defaults.txt
+        #$ INCLUDE: presets/2026.6/rates/defaults.txt
         set roll_rc_rate = 20
         set pitch_rc_rate = 20
         set yaw_rc_rate = 20
@@ -453,7 +453,7 @@
     #$ OPTION END
 
     #$ OPTION BEGIN (UNCHECKED): PUH's Rates
-        #$ INCLUDE: presets/4.3/rates/defaults.txt
+        #$ INCLUDE: presets/2026.6/rates/defaults.txt
 
         set rates_type = BETAFLIGHT
         set roll_rc_rate = 100
