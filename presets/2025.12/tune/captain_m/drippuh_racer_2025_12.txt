@@ -241,6 +241,7 @@
         set osd_vbat_pos = 11270
         set osd_tim_2_pos = 11302
         set osd_flymode_pos = 10790
+        set osd_throttle_pos = 11334
         set osd_vtx_channel_pos = 2165
         set osd_craft_name_pos = 10758
         set osd_pilot_name_pos = 518
