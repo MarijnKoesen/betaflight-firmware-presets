@@ -1797,7 +1797,7 @@
     },
     {
       "fullPath": "presets/2025.12/tune/captain_m/drippuh_racer_2025_12.txt",
-      "hash": "fe42f3e5bf1e9126b538719d2c324a701f851e2f61e8b745b080dc376cb3918d",
+      "hash": "379e4b7a5466df2fd75da329dd7ce357bc385c9418ff7f7dba7e222c3452d0a2",
       "title": "CaptainM Drippuh 5\" Racer",
       "firmware_version": [
         "2025.12"
@@ -1818,7 +1818,7 @@
     },
     {
       "fullPath": "presets/2025.12/tune/captain_m/multigp_pro_spec.txt",
-      "hash": "4082b199e3a6ee5c914ce2783cad3836c0ffdd6e5d700ecf556084aca4b50092",
+      "hash": "8177178650c55a357ddbfd740d6ebd31c77e4bbd8ecc99adb29e1f2a0a275f22",
       "title": "CaptainM MultiGP Pro Spec 7\" Racer",
       "firmware_version": [
         "2025.12"
