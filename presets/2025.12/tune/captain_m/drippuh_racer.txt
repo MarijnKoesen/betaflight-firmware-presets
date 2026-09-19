@@ -53,6 +53,25 @@
 #     simplified_d_max_gain in 2025.12)
 #   - debug_mode (GYRO_SCALED in 4.5, MULTI_GYRO_SCALED in 2025.12)
 #
+#
+# --- CLI GOTCHAS (learned the hard way, do not re-derive) ---
+#
+# 1. Channel numbering differs per command:
+#      aux / vtx   -> AUX-RELATIVE   (7 = AUX8, 11 = AUX12)
+#      rxfail      -> ABSOLUTE       (0-3 are the AETR flight channels, so
+#                                     15 = AUX12, and AUX8 would be 11)
+#
+# 2. The mode number in an 'aux' line is Betaflight's PERMANENT ID, not the
+#    position in the boxId_e enum (that enum is reordered between releases).
+#    By permanent ID: 0=ARM, 1=ANGLE, 13=BEEPER, 26=BLACKBOX, 27=FAILSAFE,
+#    28=AIR MODE, 29=3D DISABLE, 35=FLIP OVER AFTER CRASH, 36=PREARM.
+#    Look these up in src/main/msp/msp_box.c rather than guessing.
+#
+# 3. aux range bounds must be multiples of 25. rxfail values are stored in
+#    25us steps from a 750 floor, so 875 and 1000 are exact, 988 is not.
+#
+# 4. Run 'npm run verify' before committing.
+#
 # These lines start with a single '#', not '#$', so the Betaflight
 # Configurator ignores them and they are not shown to the user.
 # ============================================================================
