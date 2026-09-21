@@ -334,7 +334,7 @@
 # AUX-relative, so 7 = AUX8.
 #$ OPTION_GROUP BEGIN: Switchable Quads
     #$ OPTION BEGIN (UNCHECKED): Drone #1
-        set craft_name = Drippuh #1
+        set craft_name = "Drippuh 1"
 
         # AUX8 is 988 for this quad -> valid band 900-1100
         # FAILSAFE (mode 27) whenever AUX8 falls outside that band
@@ -342,7 +342,7 @@
     #$ OPTION END
 
     #$ OPTION BEGIN (UNCHECKED): Drone #2
-        set craft_name = Drippuh #2
+        set craft_name = "Drippuh 2"
 
         # AUX8 is 1193 for this quad -> valid band 1100-1200
         # FAILSAFE (mode 27) whenever AUX8 falls outside that band
@@ -351,7 +351,7 @@
     #$ OPTION END
 
     #$ OPTION BEGIN (UNCHECKED): Drone #3
-        set craft_name = Drippuh #3
+        set craft_name = Drippuh 3
 
         # AUX8 is 1398 for this quad -> valid band 1200-1400
         # FAILSAFE (mode 27) whenever AUX8 falls outside that band
@@ -360,7 +360,7 @@
     #$ OPTION END
 
     #$ OPTION BEGIN (UNCHECKED): Drone #4
-        set craft_name = Drippuh #4
+        set craft_name = Drippuh 4
 
         # AUX8 is 1602 for this quad -> valid band 1400-1700
         # FAILSAFE (mode 27) whenever AUX8 falls outside that band
@@ -369,7 +369,7 @@
     #$ OPTION END
 
     #$ OPTION BEGIN (UNCHECKED): Drone #5
-        set craft_name = Drippuh #5
+        set craft_name = Drippuh 5
 
         # AUX8 is 1807 for this quad -> valid band 1700-1900
         # FAILSAFE (mode 27) whenever AUX8 falls outside that band
@@ -378,7 +378,7 @@
     #$ OPTION END
 
     #$ OPTION BEGIN (UNCHECKED): Drone #6
-        set craft_name = Drippuh #6
+        set craft_name = Drippuh 6
 
         # AUX8 is 2012 for this quad -> valid band 1900-2100
         # FAILSAFE (mode 27) whenever AUX8 falls outside that band
