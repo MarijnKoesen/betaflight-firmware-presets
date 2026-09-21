@@ -8,7 +8,7 @@
 #$ PARSER: MARKED
 #$ FORCE_OPTIONS_REVIEW: TRUE
 
-#$ DESCRIPTION: Version 0.0.2
+#$ DESCRIPTION: Version 0.0.3
 #$ DESCRIPTION: This is my personal tune, including all my modes, osd etc so I can easily configure my quads. USE AT YOUR OWN RISK.
 #$ DESCRIPTION:
 #$ DESCRIPTION: ### Requirements:
