@@ -2689,7 +2689,7 @@
     },
     {
       "fullPath": "presets/2025.12/tune/captain_m/drippuh_racer.txt",
-      "hash": "5ac8a02b4b907f0af7ce1fad158fc27378ee9281759fa046d02274dd0008ed2e",
+      "hash": "59b9c8bd9347784d47492ec86e55f4375adc0d22a68a7cf593ffe372ac430fac",
       "title": "CaptainM Drippuh 5\" Racer",
       "firmware_version": [
         "2025.12"
@@ -3904,6 +3904,27 @@
         "tinyTrainer"
       ],
       "author": "sugarK",
+      "priority": 1000000000000
+    },
+    {
+      "fullPath": "presets/2026.6/tune/captain_m/drippuh_racer.txt",
+      "hash": "e624b41edc328851506c1812951cd88c954d13a7908527c7b24d1a5c7c56c58f",
+      "title": "CaptainM Drippuh 5\" Racer",
+      "firmware_version": [
+        "2026.6"
+      ],
+      "category": "TUNE",
+      "status": "EXPERIMENTAL",
+      "keywords": [
+        "6S",
+        "race",
+        "racing",
+        "5 inch",
+        "5\"",
+        "drippuh"
+      ],
+      "author": "Captain M",
+      "force_options_review": true,
       "priority": 1000000000000
     },
     {
@@ -10916,7 +10937,7 @@
     },
     {
       "fullPath": "presets/4.5/tune/captain_m/drippuh_racer.txt",
-      "hash": "1549976cac500dc0aa523340dd7754e2753b4256b9118cd1d41ed3f53a6a25aa",
+      "hash": "3382d435c88aca3cc0854f9904e80b51f52202d9028f93f869ac61cf7a7b8aaa",
       "title": "CaptainM Drippuh 5\" Racer",
       "firmware_version": [
         "4.5"
