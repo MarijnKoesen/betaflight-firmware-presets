@@ -211,8 +211,6 @@
 #$ OPTION_GROUP BEGIN: (EXCLUSIVE) Flight Controller
     #$ OPTION BEGIN (CHECKED): Base settings
         feature -AIRMODE
-        beeper -RX_LOST
-        beacon RX_LOST
         set dshot_bidir = ON
         set debug_mode = GYRO_SCALED
 
@@ -254,12 +252,46 @@
         set motor_pwm_protocol = DSHOT600
     #$ OPTION END
 
-    #$ OPTION BEGIN (UNCHECKED): Switchable VTX power (for HDZero) on `UserMode 1`
-        # Enable 9v BEC switching to be able to fully disable VTX
-        # It adds a `User 1` mode, that needs to be enabled in order for the VTX to be powered on. See: https://www.youtube.com/watch?v=dnOV5_n3y4c
-        resource PINIO 1 E03
-        set pinio_config = 1
-        set pinio_box = 40
+    #$ OPTION BEGIN (UNCHECKED): Cut VTX power when in failsafe
+        # There are 2 options here:
+        #
+        # Option 1: Rely on the vtxtables and make it so that AUX 12 can 
+        # trigger the vtx can go into powermode 0mW. This is done be setting:
+        #    vtx 0 11 0 0 3 900 1300
+        #    rxfail 15 s 1000
+        # This says: "vtx goes into mode 3 (0mW) when AUX 12 (channel 11) has
+        # a value between 900 and 1300. The second line says when we are in
+        # failsafe, (s)et 15 (AUX 12) to value 1000, thus driving the VTX to 
+        # 0mW when in failsafe.
+        # See: https://www.youtube.com/watch?v=oagiNwXK8uE
+        # See: https://www.youtube.com/watch?v=nRM_bXJ4sWQ
+        #
+        # Option 2: make the 9v BEC switchable so we can physically turn
+        # off the power to the VTX. You can do this as follows:
+        #     resource PINIO 1 E03 
+        #     set pinio_config = 129,1,1,1
+        #     set pinio_box = 27,255,255,255
+        # This creates a new IO pin number 1 against pin E03. Then it sets the config 
+        # to 129 which means that by default the pin is the inverted output (in our case 
+        # we will tie it to FAILSAFE, so whenever FAILSAFE is on (1, high), it will set 
+        # the pin to the invertion (0, low) and a LOW value on the BEC means no power to VTX)
+        # The pinio_box = 27 means look at failsafe (which is 27, see the docs)
+        # Note that there are 4 pins in betaflight, and we only use the first one, hence we
+        # keep the default values of 1 and 255 on the other pins
+        # See: https://betaflight.com/docs/wiki/guides/current/Pinio-and-PinioBox
+        # See: https://www.youtube.com/watch?v=dnOV5_n3y4c
+        #
+        # Which option you choose depends on the use case a bit. Option 1 is faster
+        # because the VTX stays powered on, but it still heats up the VTX, even though
+        # it's much slower than when it's properly turned on, but it still uses 0.5W
+        # The BEC option really cuts the power to the VTX which is better for heat as 
+        # there is literally no power, there is no heat, but when you turn the VTX on
+        # it will take around 2 seconds too boot up, so take that into account.
+        #
+        # We are going with option 2 today:
+        resource PINIO 1 E03 
+        set pinio_config = 129,1,1,1
+        set pinio_box = 27,255,255,255
     #$ OPTION END
 #$ OPTION_GROUP END
 
